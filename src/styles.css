@@ -1,0 +1,45 @@
+.app-header {
+margin-bottom: 20px 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin-top: 25px;
+}
+h1,
+.emoji-big,
+.temp-big,
+.weekday-date-small,
+.weekday-small {
+  text-align: center;
+} 
+.emoji-big {
+  font-size: 60px;
+}
+.temp-big {
+  font-size: 54px;
+  font-weight: 900;
+}
+}
+.weekday-date-small {
+  font-size: 12px;
+}
+.input-group-text {
+  background: none;
+}
+.weather-description {
+  padding-top: 20px;
+}
+.five-days-card {
+  margin: 20px 0;
+  padding: 20px 0;
+}
+.btn-light{
+  padding: 5px;
+}
+
+.btn-light:hover {
+  color: #212529;
+  background-color: #e3e3e3;
+  border-color: #e3e3e3;
+}
