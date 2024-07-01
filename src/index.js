@@ -1,31 +1,3 @@
-/*let weather = {
-    paris: {
-    name: "Paris",
-    temp: 19.7,
-    humidity: 80
-  },
-  tokyo: {
-    name: "Tokyo",
-    temp: 17.3,
-    humidity: 50
-  },
-  lisbon: {
-    name: "Lisbon",
-    temp: 30.2,
-    humidity: 20
-  },
-  "san francisco": {
-    name: "San Francisco",
-    temp: 20.9,
-    humidity: 100
-  },
-  warsaw: {
-    name: "Warsaw",
-    temp: -5,
-    humidity: 20
-  }
-};*/
-
 let monthName = [
   "January",
   "February",
@@ -38,7 +10,7 @@ let monthName = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 let weekdayName = [
   "Sunday",
@@ -47,7 +19,7 @@ let weekdayName = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 
 let smallDate = document.querySelector(".weekday-date-small");
