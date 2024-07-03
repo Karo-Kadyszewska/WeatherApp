@@ -35,14 +35,19 @@ h1,
   padding: 20px 0;
 }
 .btn-primary {
-  padding: 5px;
   background-color: #5c636a;
   border-color: #ced4da;
 }
 .btn-primary:hover {
-  padding: 5px;
   color: #212529;
   background-color: #e3e3e3;
+  border-color: #e3e3e3;
+}
+.btn-primary:focus {
+  background-color: #5c636a;
+  border-color: #ced4da;
+}
+.btn-primary:focus-visible {
   border-color: #e3e3e3;
 }
 .btn-light {
