@@ -34,6 +34,17 @@ h1,
   margin: 20px 0;
   padding: 20px 0;
 }
+.btn-primary {
+  padding: 5px;
+  background-color: #5c636a;
+  border-color: #ced4da;
+}
+.btn-primary:hover {
+  padding: 5px;
+  color: #212529;
+  background-color: #e3e3e3;
+  border-color: #e3e3e3;
+}
 .btn-light {
   padding: 5px;
 }
