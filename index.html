@@ -21,8 +21,8 @@
   <body>
     <div class="container">
      <section class="section-search-city"> 
-        <div class="d-flex justify-content-center">
-          <div style="margin-right: 16px">
+        <div class="search-header">
+          <div >
             <form id="citySearchForm">
                 <div class="input-group">
                   <input type="text" id="search-city" class="form-control" placeholder="Search city">
@@ -32,7 +32,7 @@
                 </div>
             </form>
           </div>
-          <div class="col-6">
+          <div>
             <span class="CurrentLocation position-relative">
                 <button type="button" class="btn btn-primary" id="buttonCheckCurrentLocation">
                   Set current location
@@ -40,43 +40,46 @@
           </div>
         </div>
      </section>
-        <div class="row align-items-center app-header">
-          <div class="col-12">
-            <h1 class="display-1" id="cityHeader">
-            Paris
-            </h1>
+     <section class="city-data">
+       <div class="row align-items-center app-header">
+        <div class="col-12">
+          <h1 class="display-1" id="cityHeader">
+          Paris
+          </h1>
+        </div>
+          <div class="weekday-date-small p-1">
+            Wednesday 14th March
           </div>
-            <div class="weekday-date-small p-1">
-              Wednesday 14th March
-            </div>
-          <div class="col-6 emoji-big d-flex justify-content-end">
-              <i class="fa-solid fa-cloud-sun"></i>
+        <div class="col-6 emoji-big d-flex justify-content-end">
+            <i class="fa-solid fa-cloud-sun"></i>
+        </div>
+        <div class="col-6 align-items-left">
+          <div class="p-1">
+            <span class="temp-big">
+              19
+            </span>
+            <span class="buttonF">
+              <button type="button" class="btn btn-light">
+                <span class="buttonF-text">
+                  /C°
+                </span>
+              </button>
+            </span>
           </div>
-          <div class="col-6 align-items-left">
-            <div class="p-1">
-              <span class="temp-big">19</span>
-              <span class="buttonF">
-                <button type="button" class="btn btn-light">
-                  <span class="buttonF-text">/C°</span>
-                </button>
-              </span>
-            </div>
-            
-
+         </div>
+        
+          <div >
+            <h2 class="d-flex justify-content-center weather-description">
+            Slight drizzle with some wind devils
+            </h2>
           </div>
-          
-            <div >
-              <h2 class="d-flex justify-content-center weather-description">
-              Slight drizzle with some wind devils
-              </h2>
-            </div>
-            <div class="d-flex justify-content-center windspeed">
-              Wind: 666 km/h
-            </div>
-          
-       </div>
-      <section class="five-days-card">   
-       <div class="card">
+          <div class="d-flex justify-content-center windspeed">
+            Wind: 666 km/h
+          </div>
+         </div>
+      </section>
+      <section class="forecast">   
+       <div class="five-days-card">
           <div class="card-body">
             <div class="row">
               <div class="col weekday-small day1">
