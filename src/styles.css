@@ -32,7 +32,7 @@ h1,
 }
 
 .weekday-date-small {
-  font-size: 12px;
+  font-size: 16px;
 }
 .input-group-text {
   background: none;
@@ -40,6 +40,12 @@ h1,
 .weather-description {
   padding-top: 20px;
 }
+.smallWeatherIcon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto;
+}
+
 .windspeed {
   display: flex;
   justify-content: space-evenly;
@@ -48,11 +54,9 @@ h1,
 .five-days-card {
   margin: 20px 0;
   padding: 20px 0;
-  display: inline-flex;
-  flex-direction: row;
+  display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-basis: content;
 }
 .forecastNextDays {
   display: flex;

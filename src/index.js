@@ -67,7 +67,7 @@ function getTempAndCity(response) {
   weatherIcon.innerHTML = `
     <img
       src="${response.data.condition.icon_url}"
-      class="weather-app-icon"
+      class="emoji-big"
     ></img>
   `;
   windValue.innerHTML = Math.round(response.data.wind.speed);
@@ -102,8 +102,8 @@ function getGeolocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getAxiosForPosition);
 }
-
-function convertBigTemp(event) {
+//
+function convertUnit(event) {
   event.preventDefault();
   let changeTempFormatButton = document.querySelector(".buttonF-text");
   let tempCelcBig = document.querySelector(".temp-big");
@@ -117,6 +117,11 @@ function convertBigTemp(event) {
     clickCount = 0;
   }
 }
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
 
 function getForecast(cityInput) {
   let apiKey = "841bfa4334tb6efa8e035d83eco4e42d";
@@ -128,14 +133,18 @@ function displayForecast(response) {
   console.log(response.data);
   let forecastHtml = "";
 
-  response.data.daily.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
     <div class="forecastNextDays">
-      <div id="forecastDay">Fri</div>
+      <div id="forecastDay">${formatForecastDay(day.time)}</div>
       <div class="forecastIcon">
-        <i class="fa-solid fa-cloud-sun"></i>
+    <img
+      src="${day.condition.icon_url}"
+      class="smallWeatherIcon"
+    ></img>
       </div>
       <div class= "forecastTemperatures"> 
         <div class="forecastTempDay forecastTemperature">${Math.round(
@@ -147,6 +156,7 @@ function displayForecast(response) {
       </div>
     </div>
       `;
+    }
   });
   let forecastNextDays = document.querySelector("#forecastNextDays");
   forecastNextDays.innerHTML = forecastHtml;
@@ -154,7 +164,7 @@ function displayForecast(response) {
 
 locationSearch.addEventListener("click", getGeolocation);
 citySearch.addEventListener("submit", cityFormInput);
-changeTempFormatButton.addEventListener("click", convertBigTemp);
+changeTempFormatButton.addEventListener("click", convertUnit);
 
 getAxiosForCitySearch();
 
