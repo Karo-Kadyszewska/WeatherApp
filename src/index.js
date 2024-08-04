@@ -57,11 +57,22 @@ function getTempAndCity(response) {
   let tempCelcBig = document.querySelector(".temp-big");
   let cityHeader = document.querySelector("#cityHeader");
   let mainDescription = document.querySelector(".weather-description");
+  let weatherIcon = document.querySelector(".emoji-big");
+  let windValue = document.querySelector(".windspeedValue");
   console.log(cityName);
   console.log(temperature);
   mainDescription.innerHTML = description;
   cityHeader.innerHTML = cityName;
   tempCelcBig.innerHTML = temperature;
+  weatherIcon.innerHTML = `
+    <img
+      src="${response.data.condition.icon_url}"
+      class="weather-app-icon"
+    ></img>
+  `;
+  windValue.innerHTML = Math.round(response.data.wind.speed);
+
+  getForecast(response.data.city);
 }
 
 function getAxiosForCitySearch() {
@@ -106,11 +117,18 @@ function convertBigTemp(event) {
     clickCount = 0;
   }
 }
-function displayForecast() {
-  let forecastDays = ["Day1", "Day2", "Day3", "Day4", "Day5"];
+
+function getForecast(cityInput) {
+  let apiKey = "841bfa4334tb6efa8e035d83eco4e42d";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${cityInput}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response) {
+  console.log(response.data);
   let forecastHtml = "";
 
-  forecastDays.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `
@@ -120,8 +138,12 @@ function displayForecast() {
         <i class="fa-solid fa-cloud-sun"></i>
       </div>
       <div class= "forecastTemperatures"> 
-        <div class="forecastTempDay forecastTemperature">19°</div>
-        <div class="forecastTempNight forecastTemperature">7°</div>
+        <div class="forecastTempDay forecastTemperature">${Math.round(
+          day.temperature.day
+        )}°</div>
+        <div class="forecastTempNight forecastTemperature">${Math.round(
+          day.temperature.minimum
+        )}°</div>
       </div>
     </div>
       `;
@@ -135,7 +157,6 @@ citySearch.addEventListener("submit", cityFormInput);
 changeTempFormatButton.addEventListener("click", convertBigTemp);
 
 getAxiosForCitySearch();
-displayForecast();
 
 //Math.round((temperature * 9) /5 +32) - celcius to fahrenheir
 // temp-big
