@@ -25,7 +25,7 @@ let weekdayName = [
 let smallDate = document.querySelector(".weekday-date-small");
 smallDate.innerHTML = mainDateChange();
 
-let apiKey = "2f7ab5b8663340e58b40b89e735a06d7";
+let apiKey = "841bfa4334tb6efa8e035d83eco4e42d";
 let city = "Barcelona";
 
 let changeTempFormatButton = document.querySelector(".buttonF");
@@ -50,9 +50,9 @@ function mainDateChange(todayDate) {
 }
 
 function getTempAndCity(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let cityName = response.data.name;
-  let description = `${response.data.weather[0].main} - ${response.data.weather[0].description}   `;
+  let temperature = Math.round(response.data.temperature.current);
+  let cityName = response.data.city;
+  let description = `${response.data.condition.description}`;
   console.log(description);
   let tempCelcBig = document.querySelector(".temp-big");
   let cityHeader = document.querySelector("#cityHeader");
@@ -66,9 +66,8 @@ function getTempAndCity(response) {
 
 function getAxiosForCitySearch() {
   let cityInput = city;
-  let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}
-  &units=metric`;
-  axios.get(`${weatherApiUrl}&appid=${apiKey}`).then(getTempAndCity);
+  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityInput}`;
+  axios.get(`${weatherApiUrl}&key=${apiKey}&units=metric`).then(getTempAndCity);
 }
 
 function cityFormInput(event) {
@@ -83,10 +82,9 @@ function cityFormInput(event) {
 function getAxiosForPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiKey = "2f7ab5b8663340e58b40b89e735a06d7";
-  let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric`;
+  let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}`;
   console.log(latitude, longitude);
-  axios.get(`${weatherApiUrl}&appid=${apiKey}`).then(getTempAndCity);
+  axios.get(`${weatherApiUrl}&key=${apiKey}&units=metric`).then(getTempAndCity);
 }
 
 function getGeolocation(event) {
@@ -108,11 +106,36 @@ function convertBigTemp(event) {
     clickCount = 0;
   }
 }
+function displayForecast() {
+  let forecastDays = ["Day1", "Day2", "Day3", "Day4", "Day5"];
+  let forecastHtml = "";
+
+  forecastDays.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="forecastNextDays">
+      <div id="forecastDay">Fri</div>
+      <div class="forecastIcon">
+        <i class="fa-solid fa-cloud-sun"></i>
+      </div>
+      <div class= "forecastTemperatures"> 
+        <div class="forecastTempDay forecastTemperature">19°</div>
+        <div class="forecastTempNight forecastTemperature">7°</div>
+      </div>
+    </div>
+      `;
+  });
+  let forecastNextDays = document.querySelector("#forecastNextDays");
+  forecastNextDays.innerHTML = forecastHtml;
+}
+
 locationSearch.addEventListener("click", getGeolocation);
 citySearch.addEventListener("submit", cityFormInput);
 changeTempFormatButton.addEventListener("click", convertBigTemp);
 
 getAxiosForCitySearch();
+displayForecast();
 
 //Math.round((temperature * 9) /5 +32) - celcius to fahrenheir
 // temp-big

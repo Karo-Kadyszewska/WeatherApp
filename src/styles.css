@@ -43,6 +43,23 @@ h1,
 .five-days-card {
   margin: 20px 0;
   padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.forecastNextDays {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 0;
+}
+.forecastTemperatures {
+  display: flex;
+  justify-content: space-around;
+}
+.forecastTemperature {
+  padding: 0 5px;
 }
 .btn-primary {
   background-color: #5c636a;
