@@ -103,20 +103,7 @@ function getGeolocation(event) {
   navigator.geolocation.getCurrentPosition(getAxiosForPosition);
 }
 //
-function convertUnit(event) {
-  event.preventDefault();
-  let changeTempFormatButton = document.querySelector(".buttonF-text");
-  let tempCelcBig = document.querySelector(".temp-big");
-  if (clickCount === 0) {
-    changeTempFormatButton.innerHTML = `F°`;
-    tempCelcBig.innerHTML = 222;
-    clickCount = 1;
-  } else if (clickCount === 1) {
-    changeTempFormatButton.innerHTML = `C°`;
-    tempCelcBig.innerHTML = 19;
-    clickCount = 0;
-  }
-}
+
 function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -164,9 +151,4 @@ function displayForecast(response) {
 
 locationSearch.addEventListener("click", getGeolocation);
 citySearch.addEventListener("submit", cityFormInput);
-changeTempFormatButton.addEventListener("click", convertUnit);
-
 getAxiosForCitySearch();
-
-//Math.round((temperature * 9) /5 +32) - celcius to fahrenheir
-// temp-big
